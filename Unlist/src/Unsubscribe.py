@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     try:
         # Asssumes that chromedriver.exe is placed in the current working directory
-        driver = webdriver.Chrome(CHROMEDRIVER_PATH + "/chromedriver.exe")
+        driver = webdriver.Chrome(CHROMEDRIVER_PATH + "/driver.exe")
         driver.implicitly_wait(5)
 
         # Tell the driver to open up the webpage
