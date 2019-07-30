@@ -17,7 +17,7 @@ pip3 install selenium
     -Using the code below:
         from selenium import webdriver
         import os
-    
+
     -To open Google.com:
         driver = webDriver.Chrome(os.getcwd()+"/chromedriver.exe")
         driver.get("google.com")

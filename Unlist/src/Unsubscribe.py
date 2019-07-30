@@ -5,9 +5,7 @@ import time
 import sys
 import os
 
-# unlist.rcos@gmail.com
-# RCOS_unlist!
-
+# Write out the emails to emails.txt
 def writeEmails(email_senders):
     """Write out a list of email senders to a text file.
 
