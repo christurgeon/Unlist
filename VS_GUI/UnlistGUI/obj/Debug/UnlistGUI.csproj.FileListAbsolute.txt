@@ -1,0 +1,10 @@
+D:\cs\Unlist\VS_GUI\UnlistGUI\bin\Debug\UnlistGUI.exe.config
+D:\cs\Unlist\VS_GUI\UnlistGUI\bin\Debug\UnlistGUI.exe
+D:\cs\Unlist\VS_GUI\UnlistGUI\bin\Debug\UnlistGUI.pdb
+D:\cs\Unlist\VS_GUI\UnlistGUI\obj\Debug\UnlistGUI.csprojAssemblyReference.cache
+D:\cs\Unlist\VS_GUI\UnlistGUI\obj\Debug\UnlistGUI.Form1.resources
+D:\cs\Unlist\VS_GUI\UnlistGUI\obj\Debug\UnlistGUI.Properties.Resources.resources
+D:\cs\Unlist\VS_GUI\UnlistGUI\obj\Debug\UnlistGUI.csproj.GenerateResource.cache
+D:\cs\Unlist\VS_GUI\UnlistGUI\obj\Debug\UnlistGUI.csproj.CoreCompileInputs.cache
+D:\cs\Unlist\VS_GUI\UnlistGUI\obj\Debug\UnlistGUI.exe
+D:\cs\Unlist\VS_GUI\UnlistGUI\obj\Debug\UnlistGUI.pdb
