@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -12,15 +13,22 @@ import os
 NEXT_BUTTON = "//div[@class='h0']/div[2]"
 
 # Keep looping until the next one is reached
-def reachNextElement():
+def reachNextElement(i):
+
+    # If 50 is reached, wait to allow Chrome to load more
+    if (i == 50):
+        time.sleep(5)
 
     # Try to reach next email
     stale_element = True
     while (stale_element):
         try:
+            time.sleep(0.1)
             driver.find_element_by_xpath(NEXT_BUTTON).click()
             stale_element = False
         except StaleElementReferenceException:
+            stale_element = True
+        except ElementClickInterceptedException:
             stale_element = True
 
 
@@ -40,6 +48,12 @@ def writeEmails(email_senders):
 
 # Read in the login information from the user
 def getLogin():
+    """ Retrieve the login information for the user
+
+    Returns:
+        email - the email of the user
+        password - the password of the user
+    """
     file = open("credentials.txt", "r")
     email = file.readline().rstrip()
     password = file.readline().rstrip()
@@ -55,6 +69,11 @@ if __name__ == "__main__":
     TRACEBACK = "\n [LOGGING] Clean exit... goodbye"
 
     try:
+        # Run the window without it being open
+        options = webdriver.ChromeOptions();
+        options.add_argument('headless');
+        ######################################
+
         # Asssumes that chromedriver.exe is placed in the current working directory
         driver = webdriver.Chrome(CHROMEDRIVER_PATH + "/chromedriver.exe")
         time.sleep(1)
@@ -125,7 +144,7 @@ if __name__ == "__main__":
                 except NoSuchElementException:
                     print(" [LOGGING] \"" +sender+ "\": Already unsubscribed or unable to...")
 
-            reachNextElement()
+            reachNextElement(i)
 
         writeEmails(email_dict)
     except Exception as e:
