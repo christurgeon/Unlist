@@ -4,21 +4,17 @@ import imaplib
 import mailbox
 
 """
-
 To enable IMAP in Gmail:
-
 Sign in to Gmail.
 Click the gear icon  in the upper-right and select Gmail settings at the top of any Gmail page.
 Click Forwarding and POP/IMAP.
 Select Enable IMAP.
 Configure your IMAP client and click Save Changes.
-
 """
 
 # Read in the login information from the user
 def getLogin():
     """ Retrieve the login information for the user
-
     Returns:
         email - the email of the user
         password - the password of the user
@@ -33,7 +29,6 @@ def getLogin():
 # Write out the emails to emails.txt
 def writeEmails(email_senders):
     """Write out a list of email senders to a text file.
-
     Args:
         email_senders - the list of email sender names
     """

@@ -110,6 +110,7 @@ namespace UnlistGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(595, 648);
             this.Controls.Add(this.parseStatus);
             this.Controls.Add(this.Unsubscribe);
@@ -122,6 +123,7 @@ namespace UnlistGUI
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Unlist";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,4 +141,3 @@ namespace UnlistGUI
         private System.Windows.Forms.ProgressBar parseStatus;
     }
 }
-

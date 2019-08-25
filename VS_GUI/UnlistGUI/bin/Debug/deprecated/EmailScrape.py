@@ -10,7 +10,7 @@ FROM_PWD    = ""
 SMTP_SERVER = "imap.gmail.com"
 SMTP_PORT   = 993
 
-# This function is adapted from the link 
+# This function is adapted from the link
 # https://codehandbook.org/how-to-read-email-from-gmail-using-python/
 # Used to connect and fetch emails from Gmail
 def read_email_from_gmail():
@@ -22,7 +22,7 @@ def read_email_from_gmail():
         type, data = mail.search(None, 'ALL')
         mail_ids = data[0]
 
-        id_list = mail_ids.split()   
+        id_list = mail_ids.split()
         first_email_id = int(id_list[0])
         latest_email_id = int(id_list[-1])
 
@@ -32,7 +32,7 @@ def read_email_from_gmail():
             file = open("body.html", "w")
             for response_part in data:
                 if isinstance(response_part, tuple):
-                    #instead of beautiful soup, use regex 
+                    #instead of beautiful soup, use regex
                     part = response_part[1].decode('utf-8')
                     msg = email.message_from_string(part)
                     email_body = quopri.decodestring(response_part[1])
@@ -45,8 +45,8 @@ def read_email_from_gmail():
                         file.write('\n')
                    #  decoded = BeautifulSoup(response_part[1], 'html.parser')
                     #file.write(response_part[1])
-                    
-    except Exception, e:   
+
+    except Exception, e:
         print str(e)
 
 if __name__ == "__main__":

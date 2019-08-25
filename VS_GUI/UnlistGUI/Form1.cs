@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Diagnostics;
 /**
  * Unlist GUI - An application to unsubscribe from those pesky companies who won't leave you alone!
  *
@@ -29,14 +29,16 @@ namespace UnlistGUI
          */
         private void Submit_Click(object sender, EventArgs e)
         {
-            File.WriteAllText("credentials.txt",User.Text + ":" + Pass.Text);
-            FileInfo emails = new FileInfo("emails.txt");
+
+            File.WriteAllText("src/credentials.txt",User.Text + "\n" + Pass.Text);
+            FileInfo emails = new FileInfo("src/emails.txt");
             if (IsFileLocked(emails)) {
             }
             int count = 0;
             parseStatus.Step = 1;
-            parseStatus.Maximum = File.ReadLines("emails.txt").Count();
-            using (StreamReader readtext = new StreamReader("emails.txt"))
+            run_cmd("getEmails.bat");
+            parseStatus.Maximum = File.ReadLines("src/emails.txt").Count();
+            using (StreamReader readtext = new StreamReader("src/emails.txt"))
             {
                 while (!readtext.EndOfStream)
                 {
@@ -46,6 +48,7 @@ namespace UnlistGUI
                     parseStatus.PerformStep();
                 }
             }
+
             Unsubscribe.Visible = true;
         }
 
@@ -88,7 +91,30 @@ namespace UnlistGUI
             {
                 checkedItems += (Item.ToString() + "\n");
             }
-            System.IO.File.WriteAllText("selected_emails.txt",checkedItems);
+            System.IO.File.WriteAllText("src/selected_emails.txt",checkedItems);
+            run_cmd("unsubscribe.bat");
+        }
+        private void run_cmd(string cmd)
+        {
+            try
+            {
+                Process p = new Process(); 
+                Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
+                p.StartInfo.FileName = cmd; 
+                p.StartInfo.CreateNoWindow = false;
+                p.Start();
+                p.WaitForExit(); 
+                MessageBox.Show("Running " +cmd);
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.StackTrace.ToString());
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
+

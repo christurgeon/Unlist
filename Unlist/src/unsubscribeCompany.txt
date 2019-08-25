@@ -1,4 +1,0 @@
-company123:http://company123.com
-testcomp:https://facebook.com
-apple:sis.rpi.edu
-googl:google.com
